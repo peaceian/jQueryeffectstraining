@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>htmlcssjquery疊加效果練習</title>
+    <style>
+        body, html {height: 100%; margin: 0;}
+        .row {display: flex;flex: 1fr,1fr,1fr;}
+        .column {
+            float: left;
+            width: 33.3%;
+            /*the width desides the size of the image and card*/
+            margin-bottom: 20px;
+            padding: 10px;
+        }
+
+        @media screen and (max-width:650px) {
+            .column {
+                width: 100%;
+                display: block;
+            }
+
+        }
+
+        .card {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        /*the shadow effect*/
+        .container {
+            padding: 0 16px;
+        }
+
+        /*the 0 was changed to 5px if do not use the ::after*/
+        .container::after,
+        .row::after {
+            content: "";
+            clear: both;
+            display: table-cell;
+        }
+
+        /*::before and ::after must have the "content" attribute;
+         ::after was used to add space between the button*/
+        /*::after will be used to change the float, clear, adjuction*/
+        .title {
+            color: grey;
+        }
+
+        .button {
+            border: none;
+            outline: 0;
+            display: inline-block;
+            /*inline but have block style (no overlap)*/
+            padding: 8px;
+            color: white;
+            background-color: lightseagreen;
+            text-align: center;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1rem;
+            transition: border-radius .5s ease-in;
+        }
+
+
+        img {height: 100vh;object-fit: cover;}
+
+        .image-frame {
+            position: relative;
+        }
+
+        /*relative to fit the width of the .column*/
+        .image-caption {
+
+            display: none;
+            opacity: 0.8;
+            background-color: gainsboro;
+            width: 100%;
+            position: absolute;
+            top: 30%;
+            padding: 10% 0px;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(".card").hover(function () {
+                $(this).css("background-color", "#f0f0f0");//mouse in 
+            }, function () {
+                $(this).css("background-color", "white");//mouse out after the hover 
+            });
+        });
+
+        $(document).ready(function () {
+            $(".image-frame").hover(function () {/*the same effect with :hover*/
+                $(".image-caption", this).slideToggle("slow");
+            }, function () {
+                $(".image-caption", this).slideToggle("slow");
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <section class="row">
+        <div class="column">
+            <div class="card">
+                <div class="image-frame">
+                    <img src="image2.jpg" alt="Tac" style="width:100%;">
+                    <div class="image-caption">
+                        <h4>Alexis Ren</h4>
+                        <p>CEO & Founder</p>
+                    </div>
+                </div>
+                <div class="container">
+                    <h2>Alexis Ren</h2>
+                    <p class="title">CEO & Founder</p>
+                    <p>略</p>
+                    <a href="#"><i class="fa-brands fa-facebook fa-fw fa-2x"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram-square fa-fw fa-2x"></i></a>
+                    <p><button class="button">Read More</button></p>
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="card">
+                <div class="image-frame">
+                    <img src="image3.jpg" alt="Tac" style="width:100%;">
+                    <div class="image-caption">
+                        <h4>Alexis Ren</h4>
+                        <p>CEO & Founder</p>
+                    </div>
+                </div>
+                <div class="container">
+                    <h2>Alexis Ren</h2>
+                    <p class="title">CEO & Founder</p>
+                    <p>略</p>
+                    <a href="#"><i class="fa-brands fa-facebook fa-fw fa-2x"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram-square fa-fw fa-2x"></i></a>
+                    <p><button class="button">Read More</button></p>
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="card">
+                <div class="image-frame">
+                    <img src="image4.jpg" alt="Tac" style="width:100%;">
+                    <div class="image-caption">
+                        <h4>Alexis Ren</h4>
+                        <p>CEO & Founder</p>
+                    </div>
+                </div>
+                <div class="container">
+                    <h2>Alexis Ren</h2>
+                    <p class="title">CEO & Founder</p>
+                    <p>略</p>
+                    <a href="#"><i class="fa-brands fa-facebook fa-fw fa-2x"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram-square fa-fw fa-2x"></i></a>
+                    <p><button class="button">Read More</button></p>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>
